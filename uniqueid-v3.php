@@ -1,6 +1,6 @@
 <?php
 
-class acf_field_{{field_name}} extends acf_Field
+class acf_field_uniqueid extends acf_Field
 {
 
 	// vars
@@ -26,8 +26,8 @@ class acf_field_{{field_name}} extends acf_Field
   	parent::__construct($parent);
 
   	// set name / title
-  	$this->name = '{{field_name}}';
-	  $this->title = __('{{field_label}}');
+  	$this->name = 'uniqueid';
+	  $this->title = __('unique id');
 	  $this->defaults = array(
 		  // add default here to merge into your field.
 		  // This makes life easy when creating the field options as you don't need to use any if( isset('') ) logic. eg:
@@ -117,37 +117,7 @@ class acf_field_{{field_name}} extends acf_Field
 
 	function create_options($key, $field)
 	{
-		// defaults?
-		/*
-		$field = array_merge($this->defaults, $field);
-		*/
 
-
-		// Create Field Options HTML
-		?>
-<tr class="field_option field_option_<?php echo $this->name; ?>">
-	<td class="label">
-		<label><?php _e("Preview Size", 'acf'); ?></label>
-		<p class="description"><?php _e("Thumbnail is advised", 'acf'); ?></p>
-	</td>
-	<td>
-		<?php
-
-		$this->parent->create_field(array(
-			'type'    =>	'radio',
-			'name'    =>	'fields[' . $key . '][preview_size]',
-			'value'	  => $field['preview_size'],
-			'layout'  => 'horizontal',
-			'choices'	=> array(
-				'thumbnail' => __('Thumbnail'),
-				'something_else' => __('Something Else'),
-			)
-		));
-
-		?>
-	</td>
-</tr>
-		<?php
 	}
 
 
@@ -191,11 +161,13 @@ class acf_field_{{field_name}} extends acf_Field
 
 		// perhaps use $field['preview_size'] to alter the markup?
 
+		if ( empty($field['value']) ) $field['value'] = uniqid();
 
 		// create Field HTML
 		?>
 		<div>
-
+			<?= $field['label'] ?>: <?= $field['value'] ?>
+			<input type="hidden" value="<?= $field['value'] ?>" name="<?= $field['name'] ?>" />
 		</div>
 		<?php
 	}
@@ -237,11 +209,11 @@ class acf_field_{{field_name}} extends acf_Field
 
 
 		// register acf scripts
-		wp_register_script('acf-input-{{field_name}}', $this->settings['dir'] . 'js/input.js', array('acf-input'), $this->settings['version']);
+		wp_register_script('acf-input-uniqueid', $this->settings['dir'] . 'js/input.js', array('acf-input'), $this->settings['version']);
 
 		// scripts
 		wp_enqueue_script(array(
-			'acf-input-{{field_name}}',
+			'acf-input-uniqueid',
 		));
 
 
@@ -252,11 +224,11 @@ class acf_field_{{field_name}} extends acf_Field
 		// Note: This function can be removed if not used
 
 
-		wp_register_style('acf-input-{{field_name}}', $this->settings['dir'] . 'css/input.css', array('acf-input'), $this->settings['version']);
+		wp_register_style('acf-input-uniqueid', $this->settings['dir'] . 'css/input.css', array('acf-input'), $this->settings['version']);
 
 		// styles
 		wp_enqueue_style(array(
-			'acf-input-{{field_name}}',
+			'acf-input-uniqueid',
 		));
 	}
 
