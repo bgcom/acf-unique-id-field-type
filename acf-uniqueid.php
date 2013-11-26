@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Advanced Custom Fields: unique id
-Plugin URI: {{git_url}}
+Plugin URI: https://github.com/gelform/acf-unique-id-field-type
 Description: Adds a hidden unique id field, set by php's uniqid()
 Version: 1.0.0
 Author: Corey Maass
