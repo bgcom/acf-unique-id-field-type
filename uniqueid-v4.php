@@ -94,8 +94,7 @@ class acf_field_uniqueid extends acf_field
 		// create Field HTML
 		?>
 		<div>
-			<?= $field['label'] ?>: <?= $field['value'] ?>
-			<input type="hidden" value="<?= $field['value'] ?>" name="<?= $field['name'] ?>" />
+			<input type="text" value="<?= $field['value'] ?>" name="<?= $field['name'] ?>" />
 		</div>
 		<?php
 	}
