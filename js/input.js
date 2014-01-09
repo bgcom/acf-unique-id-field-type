@@ -18,12 +18,20 @@
 	
 	$(document).live('acf/setup_fields', function(e, postbox){
 		
-		$(postbox).find('.my-field-class').each(function(){
-			
-			// initiate JS on my field!
-			// $(this).add_awesome_stuff();
-			
+		$(postbox).find('.acf-uniqueid').each(function(){
+
+			// if value isn't from database, replace it
+			console.log('data-value', $(this).attr('data-value'));
+			if ( $(this).attr('data-value') === '' )
+			{
+				// change the value dynamicly
+				var rand = Math.round(new Date().getTime() * Math.random() * 100000);
+				$(this).val( rand );
+				console.log('new', $(this).val());
+			}
 		});
+
+
 	
 	});
 
