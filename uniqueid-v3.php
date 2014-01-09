@@ -223,12 +223,12 @@ class acf_field_uniqueid extends acf_Field
 		// Note: This function can be removed if not used
 
 
-		wp_register_style('acf-input-uniqueid', $this->settings['dir'] . 'css/input.css', array('acf-input'), $this->settings['version']);
+		// wp_register_style('acf-input-uniqueid', $this->settings['dir'] . 'css/input.css', array('acf-input'), $this->settings['version']);
 
 		// styles
-		wp_enqueue_style(array(
-			'acf-input-uniqueid',
-		));
+		// wp_enqueue_style(array(
+		// 	'acf-input-uniqueid',
+		// ));
 	}
 
 
