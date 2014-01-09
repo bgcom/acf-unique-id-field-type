@@ -161,12 +161,12 @@ class acf_field_uniqueid extends acf_Field
 
 		// perhaps use $field['preview_size'] to alter the markup?
 
-		if ( empty($field['value']) ) $field['value'] = uniqid();
+		// if ( empty($field['value']) ) $field['value'] = uniqid();
 
 		// create Field HTML
 		?>
 		<div>
-			<input type="text" value="<?= $field['value'] ?>" name="<?= $field['name'] ?>" />
+			<input type="text" class="acf-uniqueid" value="<?= $field['value'] ?>" name="<?= $field['name'] ?>" />
 		</div>
 		<?php
 	}
